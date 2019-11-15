@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+    <link rel="stylesheet" href="artid.css">
+</head>
+<body>
+    <template id="con">
+            <div class="mid-a">  
+                    <button @click="getMessage">点击</button>  
+                    <table style="width: 1198px">
+                        <tbody v-for="item in wenZhang">
+                            <tr>
+                                <th>
+                                    <div><a><img id="img" width="60px" src="cg.png"></a></div>
+                                    <div class="content">
+                                        <a :href="href"><span>{{item.title}}</span></a>
+                                        <div class="info">
+                                            <a class="clear">
+                                                <em class="replies">0</em>
+                                                <img class="images" src="comment.png">
+                                            </a>
+                                            <a href="">
+                                                <img src="" alt="" style="float: left">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:82px">
+                                        <div>
+                                           
+                                            {{item.text}}
+                                            <ul>
+                                                <li v-for="item1 in item.arr">
+                                                    <div class="img" v-bind:style="'backgroundImage:url('+item1+ ')'"></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    </template>   
+    <div id="app">
+        
+    </div>
+    <script src="../../public/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/qs/6.5.2/qs.min.js"></script> -->
+
+    <script src="index.js"></script>
+</body>
+</html>
