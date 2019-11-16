@@ -1,3 +1,1 @@
-# Kanade
-
-天使
+vue (没有使用 vue -cli)
