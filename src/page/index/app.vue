@@ -5,16 +5,16 @@
             <tbody v-for="item in wenZhang">
                 <tr>
                     <th>
-                        <div><a><img id="img" width="60px" src="cg.png"></a></div>
+                        <div><a><img id="img" width="60px" src="./cg.png"></a></div>
                         <div class="content">
                             <a :href="href"><span>{{item.title}}</span></a>
                             <div class="info">
                                 <a class="clear">
                                     <em class="replies">0</em>
-                                    <img class="images" src="comment.png">
+                                    <img class="images" src="./comment.png">
                                 </a>
                                 <a href="" class="view" style="margin-top: 8px">
-                                    <img src="pageview.png" alt="" style="float: left">1200
+                                    <img src="./pageview.png" alt="" style="float: left">1200
                                 </a>
                             </div>
                         </div>
@@ -44,9 +44,9 @@ export default{
      data(){
         return {
             wenZhang:[
-                {title:"神秘之旅",date:2019,arr:["a.jpg","Public/cg.png","/a.jpg"]},
+                {title:"神秘之旅",date:2019,arr:[require('./a.jpg'),require('./cg.png'),require('./a.jpg')]},
                 {title:"第二篇文章",date:2019,text:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."},
-                {title:"第三篇文章",date:2019,arr:["/a.jpg","cg.png","Public/a.jpg"]},
+                {title:"第三篇文章",date:2019,arr:["./a.jpg","./cg.png","./a.jpg"]},
             ],
             href:"#"
         }

@@ -100,7 +100,7 @@ label{
     display: inline-block;
     cursor: pointer;
 }
- 
+/*  
 label input[type="radio"]+span,label input[type="checkbox"]+span{
     width: 16px;
     height: 16px;
@@ -118,6 +118,8 @@ label input[type="radio"]:checked~i,label input[type="checkbox"]:checked~i{
  
 /*可选*/
 /* 自定义数字框配置 */
+
+/* 
 input[type="number"]{
     width: 76px;
     height: 36px;
@@ -155,4 +157,4 @@ input[type="number"]+div > .count_subtract{
     height: 19px;
     background: url("../images/count_subtract.png") no-repeat;
     background-size: contain;
-}
+}  */

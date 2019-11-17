@@ -1,8 +1,9 @@
 const path =require('path')
+const HtmlWebpackPlugin=require('html-webpack-plugin')
 module.exports={
     entry:{
-        main1:'./src/page/index/index.js',
-        main2:'./src/page/user/user.js'
+        index:'./src/page/index/index.js',
+        user:'./src/page/user/user.js'
 
     },
     output:{
@@ -26,8 +27,19 @@ module.exports={
                   }
             },
             {
-                test:/\.css/,
+                test:/\.css$/,
                 use:['style-loader','css-loader']
+            },
+            {
+                test:/\.(png|jpg|gif|jpeg)$/,
+                use:[
+                    {
+                        loader:'url-loader',
+                        options:{
+                            limit:100
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -36,5 +48,17 @@ module.exports={
         contentBase:"./dist",
         inline:true,
         port:'8085'
-    }
+    },
+    plugins:[
+        new HtmlWebpackPlugin({
+            filename:'index.html',
+            template:'./src/page/index/index.html',
+            chunks:['index']
+        }),
+        new HtmlWebpackPlugin({
+            filename:'user.html',
+            template:'./src/page/user/user.html',
+            chunks:['user']
+        })
+    ]
 }

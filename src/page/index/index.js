@@ -9,3 +9,5 @@ import app from "./app.vue"
     // }
     render: h => h(app)
 });
+require('./artid.css')
+require('../../assets/css/base.css')
