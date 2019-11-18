@@ -17,7 +17,7 @@ module.exports={
                 use:['vue-loader']
             },
             {
-                test:/\.js/,
+                test:/\.js$/,
                 exclude:/(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
@@ -40,7 +40,12 @@ module.exports={
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                loader: 'file-loader'
             }
+            
         ]
     },
     mode: 'production',

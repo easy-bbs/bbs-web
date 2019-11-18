@@ -1,6 +1,7 @@
 <template>
-    <div class="mid-a" id="app">   
-        <button @click="getMessage">点击</button>  
+    <div class="mid-a" id="app">  
+        <Nav></Nav> 
+        
         <table style="width: 1198px">
             <tbody v-for="item in wenZhang">
                 <tr>
@@ -34,13 +35,24 @@
                 </tr>
             </tbody>
         </table>
+        <Page></Page>
+
+    
     </div>
 </template>
 <script>
+import Page from './childComponents/pag.vue';
+import Nav from './childComponents/nav.vue'
+
 
 import {request} from "../../network/request"
 export default{
     name:"app",
+    components:{
+        Page,
+        Nav,
+       
+    },
      data(){
         return {
             wenZhang:[
