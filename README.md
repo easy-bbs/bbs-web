@@ -6,4 +6,6 @@ vue (没有使用 vue -cli)
    
  - 打包命令：
 	运行npm run build
-123
+
+- 运行命令：
+	
