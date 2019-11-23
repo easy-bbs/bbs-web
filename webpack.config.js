@@ -3,8 +3,8 @@ const HtmlWebpackPlugin=require('html-webpack-plugin')
 module.exports={
     entry:{
         index:'./src/page/index/index.js',
-        user:'./src/page/user/user.js'
-
+        user:'./src/page/user/user.js',
+        login:'./src/page/login/login.js'
     },
     output:{
         path:path.resolve(__dirname,'./dist'),
@@ -64,6 +64,11 @@ module.exports={
             filename:'user.html',
             template:'./src/page/user/user.html',
             chunks:['user']
+        }),
+        new HtmlWebpackPlugin({
+            filename:'login.html',
+            template:'./src/page/login/login.html',
+            chunks:['login']
         })
     ]
 }
