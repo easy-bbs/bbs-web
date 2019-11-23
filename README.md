@@ -8,4 +8,4 @@ vue (没有使用 vue -cli)
 	运行npm run build
 
 - 运行命令：
-	
+	运行npm run dev
