@@ -60,14 +60,15 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
           <div class="login">
-            <a href="#">
-              <img src="images/login.jpg" class="layui-nav-img" />
+            <a href="user.html">
+              <img src="../a.jpg" class="layui-nav-img" />
             </a>
             <a href="login.html">
               <span>登录</span>
+              
             </a>
             <a href="#">
-              <span>退出</span>
+              <span @click="logout">退出</span>
             </a>
           </div>
         </div>
@@ -89,9 +90,8 @@ export default {
     }
   },
   methods: {
-    login() {
-      console.log(this.flag)
-      this.flag="display:flex"
+    logout(){
+      window.sessionStorage.clear()
     }
   }
 };

@@ -85,22 +85,11 @@ export default {
         },
         res => {
           this.data = res.data;
-          if (res.data.stame == 200) {
-            this.$message({
-              message: "登录成功",
-              type: "success"
-            });
-            window.sessionStorage.setItem("token", "123456");
-            window.location.href = "index.html";
-          }
-          if(res.data.stame == 400){
-            this.$message({
-              message: "登录失败",
-              type: "error"
-            });
-          }
-
+          if (res.data.stame == 400) return this.$message.error("登录失败！");
+          this.$message.success("登录成功");
           //设置token
+          window.sessionStorage.setItem("token",res.data.token);
+          window.location.href = "index.html";
         },
         eer => {}
       );
@@ -130,7 +119,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .index {
   width: 100%;
   min-width: 300px;
@@ -165,6 +154,7 @@ export default {
 .account-list li {
   width: auto;
   display: inline-block;
+  padding: 20px
 }
 
 .account-list .icon {

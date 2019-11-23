@@ -136,8 +136,9 @@ export default {
         }
       );
     }
-  }
-};
+  },
+  
+}
 </script>
 
 <style>
