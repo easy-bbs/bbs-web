@@ -14,6 +14,7 @@ export default {
 
 .index{
     height: 100%;
+    background: black
 }
 </style>>
 
