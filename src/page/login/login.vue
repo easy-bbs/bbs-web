@@ -8,8 +8,8 @@
             type="text"
             id="user"
             prefix-icon="el-icon-user-solid"
-            v-model="formName.user"
-            @blur="inputBlur('user',formName.user)"
+            v-model="formName.name"
+            @blur="inputBlur('user',formName.name)"
           ></el-input>
           <p>{{formName.userError}}</p>
         </el-form-item>
@@ -24,11 +24,7 @@
           <p>{{formName.passwordError}}</p>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            @click="submitForm('formName')"
-            v-bind:disabled="formName.beDisabled"
-          >提交</el-button>
+          <el-button type="primary" @click="submitForm" v-bind:disabled="formName.beDisabled">提交</el-button>
           <el-button @click="resetForm">重置</el-button>
           <ul class="account-list">
             <li>
@@ -57,6 +53,7 @@
 </template>
 
 <script>
+import { request } from "../../network/request";
 export default {
   data() {
     return {
@@ -68,30 +65,45 @@ export default {
         passwordError: "",
         beDisabled: true
       },
+      data: [],
       beShow: false //传值给父组件
     };
   },
   methods: {
     resetForm: function() {
-      this.formName.user = "";
+      this.formName.name = "";
       this.formName.userError = "";
       this.formName.password = "";
       this.formName.passwordError = "";
     },
-    submitForm: function(formName) {
-      //与父组件通信传值
-      //this.$emit('showState', [this.beShow,this.formName.user])
-      //提交user password
-      var user = this.formName.user,
-        password = this.formName.password;
-      console.log(user, password);
-      Axios.get(
-        "../../src/php/login.php?user=" + user + "&password=" + password
-      )
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch(function() {});
+    submitForm() {
+      request(
+        {
+          method: "post",
+          url: "hello",
+          data: this.formName
+        },
+        res => {
+          this.data = res.data;
+          if (res.data.stame == 200) {
+            this.$message({
+              message: "登录成功",
+              type: "success"
+            });
+            window.sessionStorage.setItem("token", "123456");
+            window.location.href = "index.html";
+          }
+          if(res.data.stame == 400){
+            this.$message({
+              message: "登录失败",
+              type: "error"
+            });
+          }
+
+          //设置token
+        },
+        eer => {}
+      );
     },
     inputBlur: function(errorItem, inputContent) {
       if (errorItem === "user") {
@@ -108,7 +120,7 @@ export default {
         }
       }
       //对于按钮的状态进行修改
-      if (this.formName.user != "" && this.formName.password != "") {
+      if (this.formName.name != "" && this.formName.password != "") {
         this.formName.beDisabled = false;
       } else {
         this.formName.beDisabled = true;
@@ -147,7 +159,7 @@ export default {
   color: red;
   text-align: left;
 }
-.account-list{
+.account-list {
   padding: 0;
 }
 .account-list li {
