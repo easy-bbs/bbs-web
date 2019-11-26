@@ -60,16 +60,19 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
           <div class="login">
-            <a href="user.html">
-              <img src="../a.jpg" class="layui-nav-img" />
-            </a>
-            <a href="login.html">
-              <span>登录</span>
-              
-            </a>
-            <a href="#">
-              <span @click="logout">退出</span>
-            </a>
+            <div v-if="loginFlag">
+              <a href="login.html">
+                <span>登录</span>
+              </a>
+            </div>
+            <div v-if="!loginFlag">
+              <a href="user.html">
+                <img src="../a.jpg" class="layui-nav-img" />
+              </a>
+              <a href="#">
+                <span @click="logout">退出</span>
+              </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -84,15 +87,21 @@ export default {
   components: {
     Login
   },
-  data(){
+  data() {
     return {
-      flag:"display:none",
-    }
+      flag: "display:none",
+      loginFlag: true
+    };
   },
   methods: {
-    logout(){
-      window.sessionStorage.clear()
+    logout() {
+      window.sessionStorage.clear();
+      this.loginFlag=true
     }
+  },
+  created(){
+    console.log(window.sessionStorage.token);
+    if(window.sessionStorage.token) this.loginFlag=false
   }
 };
 </script>
