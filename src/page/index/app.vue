@@ -62,6 +62,7 @@ export default {
   },
   data() {
     return {
+      userDater:{},
       wenZhang: [
         {
           title: "神秘之旅",
@@ -93,35 +94,7 @@ export default {
     };
   },
   methods: {
-    dian() {
-      this.wenZhang = [
-        {
-          title: "第六篇文章",
-          date: 2019,
-          arr: ["Public/a.jpg", "Public/cg.png", "Public/a.jpg"],
-          userName: "slw",
-          clickRate: 18,
-          commentCount: 90
-        },
-        {
-          title: "第五篇文章",
-          date: 2019,
-          userName: "abc",
-          clickRate: 20,
-          commentCount: 80,
-          text:
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."
-        },
-        {
-          title: "第三篇文章",
-          date: 2019,
-          userName: "sdg",
-          clickRate: 80,
-          commentCount: 100,
-          arr: ["Public/a.jpg", "Public/cg.png", "Public/a.jpg"]
-        }
-      ];
-    },
+    
     getMessage() {
       request(
         {
@@ -135,9 +108,28 @@ export default {
           console.log("不是程序错误");
         }
       );
+    },
+    getUser(){
+      let token=window.sessionStorage.token;
+      request(
+        {
+          method: "post",
+          url: "getUser",
+          data:{
+            "token":token,
+          }
+        },
+        res=>{
+          console.log(res)
+          this.userDater=res.data;
+        },{}
+      )
+
     }
   },
-  
+  created(){
+    this.getUser()
+  }
 }
 </script>
 

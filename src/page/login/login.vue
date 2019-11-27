@@ -29,7 +29,7 @@
           <ul class="account-list">
             <li>
               <a
-                href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github"
+                href="https://github.com/login/oauth/authorize?client_id=49eab1783a14c0153d65&redirect_uri=http://localhost:8080/dd_war_exploded/callback&scope=user&state=1"
                 style="{right: 26px;}"
               >
                 <!-- <Icon  style="color: rebeccapurple;" size="40" type="social-github"></Icon> -->
@@ -39,7 +39,7 @@
 
             <li>
               <a
-                href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101512648&redirect_uri=http://www.lovemtt.com/qq&state=qq"
+                href=""
                 style="{right: 26px;}"
               >
                 <img class="icon" src="../../assets/images/social-qq.svg" />
@@ -66,7 +66,7 @@ export default {
         beDisabled: true
       },
       data: [],
-      beShow: false //传值给父组件
+      //beShow: false //传值给父组件
     };
   },
   methods: {
